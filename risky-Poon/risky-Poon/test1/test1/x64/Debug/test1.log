@@ -1,0 +1,9 @@
+﻿  test1.cpp
+C:\Users\Admin\Desktop\project\test1\test1\test1.cpp(28,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Admin\Desktop\project\test1\test1\test1.cpp(38,21): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Admin\Desktop\project\test1\test1\test1.cpp(38,33): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Admin\Desktop\project\test1\test1\test1.cpp(64,29): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Admin\Desktop\project\test1\test1\test1.cpp(90,41): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Admin\Desktop\project\test1\test1\test1.cpp(101,31): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Admin\Desktop\project\test1\test1\test1.cpp(102,31): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  test1.vcxproj -> C:\Users\Admin\Desktop\project\test1\x64\Debug\test1.exe
