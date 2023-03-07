@@ -1,0 +1,7 @@
+﻿  dumb.cpp
+C:\Users\r1chwo0n\Project game\poorsakara\poorsakara\dumb.cpp(31,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\r1chwo0n\Project game\poorsakara\poorsakara\dumb.cpp(41,21): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\r1chwo0n\Project game\poorsakara\poorsakara\dumb.cpp(41,33): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\r1chwo0n\Project game\poorsakara\poorsakara\dumb.cpp(93,31): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\r1chwo0n\Project game\poorsakara\poorsakara\dumb.cpp(94,31): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  poorsakara.vcxproj -> C:\Users\r1chwo0n\Project game\poorsakara\Debug\poorsakara.exe
