@@ -19,8 +19,6 @@
 #include <fstream>
 #include <time.h>
 #include <iostream>
-
-// Here is a small helper for you! Have a look.
 #include "ResourcePath.hpp"
 
 using namespace sf;
@@ -44,20 +42,19 @@ bool isOpen(int x, int y, int z)
     return 1;
 }
 
-// เหลือ เพิ่มถาดใส่ไผ่, หน้าเมนู
 int main()
 {
     srand(time(0));
 
-    RenderWindow window(VideoMode(740, 570), "Mahjong");
+    RenderWindow window(VideoMode(740, 570), "Prototype");
 
  
      
     // Mahjong Zone //
     
     Texture t1, t2;
-    t1.loadFromFile(resourcePath() + "test.png");
-    t2.loadFromFile(resourcePath() + "test1.jpeg");
+    t1.loadFromFile(resourcePath() + "tiles.png");
+    t2.loadFromFile(resourcePath() + "bg.jpeg");
     Sprite s(t1), sBackground(t2);
     int w = 48, h = 66;
     int stepX = w / 2 - 2, stepY = h / 2 - 2;
@@ -95,7 +92,7 @@ int main()
         while (a == b) { a = rand() % n; b = rand() % n; }
         f(opens[a]) = -k;  if (k > 34) k++;
         f(opens[b]) = -k;
-        k %= 16;
+        k %= 14;
     }
 
     for (int z = 0; z < 10; z++)

@@ -7,14 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA40A33129B8A6D2007AC15E /* bg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EA40A32F29B8A6D2007AC15E /* bg.jpeg */; };
+		EA40A33229B8A6D2007AC15E /* tiles.PNG in Resources */ = {isa = PBXBuildFile; fileRef = EA40A33029B8A6D2007AC15E /* tiles.PNG */; };
 		EAF1394829B5EF4200BC0D4C /* ResourcePath.mm in Sources */ = {isa = PBXBuildFile; fileRef = EAF1394729B5EF4200BC0D4C /* ResourcePath.mm */; };
 		EAF1394B29B5EF4200BC0D4C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAF1394A29B5EF4200BC0D4C /* main.cpp */; };
 		EAF1395D29B5EFFB00BC0D4C /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = EAF1395A29B5EFFB00BC0D4C /* background.png */; };
 		EAF1395E29B5EFFB00BC0D4C /* map.txt in Resources */ = {isa = PBXBuildFile; fileRef = EAF1395B29B5EFFB00BC0D4C /* map.txt */; };
-		EAF1395F29B5EFFB00BC0D4C /* tiles.png in Resources */ = {isa = PBXBuildFile; fileRef = EAF1395C29B5EFFB00BC0D4C /* tiles.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EA40A32F29B8A6D2007AC15E /* bg.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpeg; sourceTree = SOURCE_ROOT; };
+		EA40A33029B8A6D2007AC15E /* tiles.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tiles.PNG; sourceTree = SOURCE_ROOT; };
 		EAF1394229B5EF4200BC0D4C /* Risky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Risky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAF1394629B5EF4200BC0D4C /* Risky-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Risky-Info.plist"; path = "../Risky-Info.plist"; sourceTree = "<group>"; };
 		EAF1394729B5EF4200BC0D4C /* ResourcePath.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ResourcePath.mm; sourceTree = "<group>"; };
@@ -22,7 +25,6 @@
 		EAF1394A29B5EF4200BC0D4C /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		EAF1395A29B5EFFB00BC0D4C /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = "../../../../Downloads/16_Games/12 Mahjong Solitaire/files/background.png"; sourceTree = "<group>"; };
 		EAF1395B29B5EFFB00BC0D4C /* map.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = map.txt; path = "../../../../Downloads/16_Games/12 Mahjong Solitaire/files/map.txt"; sourceTree = "<group>"; };
-		EAF1395C29B5EFFB00BC0D4C /* tiles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tiles.png; path = "../../../../Downloads/16_Games/12 Mahjong Solitaire/files/tiles.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,9 +78,10 @@
 		EAF1394C29B5EF4200BC0D4C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EA40A32F29B8A6D2007AC15E /* bg.jpeg */,
+				EA40A33029B8A6D2007AC15E /* tiles.PNG */,
 				EAF1395A29B5EFFB00BC0D4C /* background.png */,
 				EAF1395B29B5EFFB00BC0D4C /* map.txt */,
-				EAF1395C29B5EFFB00BC0D4C /* tiles.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -142,9 +145,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA40A33129B8A6D2007AC15E /* bg.jpeg in Resources */,
 				EAF1395D29B5EFFB00BC0D4C /* background.png in Resources */,
 				EAF1395E29B5EFFB00BC0D4C /* map.txt in Resources */,
-				EAF1395F29B5EFFB00BC0D4C /* tiles.png in Resources */,
+				EA40A33229B8A6D2007AC15E /* tiles.PNG in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
