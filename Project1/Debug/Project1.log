@@ -1,0 +1,8 @@
+﻿  Main.cpp
+C:\Users\Piicharpa\Project1\Project1\Main.cpp(30,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Piicharpa\Project1\Project1\Main.cpp(40,21): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Piicharpa\Project1\Project1\Main.cpp(40,33): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Piicharpa\Project1\Project1\Main.cpp(103,31): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Piicharpa\Project1\Project1\Main.cpp(104,31): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets(1096,5): error MSB6006: "link.exe" exited with code 1168.
+LINK : fatal error LNK1168: cannot open C:\Users\Piicharpa\Project1\Debug\Project1.exe for writing
