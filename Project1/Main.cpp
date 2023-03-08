@@ -113,10 +113,14 @@ int main()
                         int a = f(v1), b = f(v2);
                         if (a == b || (a > 34 && a < 39 && b>34 && b < 39) || (a >= 39 && b >= 39))
                         {
-                            f(v1) *= -1; moves.push_back(v1);
-                            f(v2) *= -1; moves.push_back(v2);
+                            f(v1) = f(v2) = -1; // turn the tiles
                         }
-                        v2 = v1;
+                        else // not a matching pair, push the selected tile to moves vector
+                        {
+                            v2 = v1;
+                            moves.push_back(v1);
+                            f(v1) *= -1; // turn the tile
+                        }
                     }
         }
 
