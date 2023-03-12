@@ -1,19 +1,3 @@
-
-//
-// Disclaimer:
-// ----------
-//
-// This code will work only if you selected window, graphics and audio.
-//
-// Note that the "Run Script" build phase will copy the required frameworks
-// or dylibs to your application bundle so you can execute it on any OS X
-// computer.
-//
-// Your resource files (images, sounds, fonts, ...) are also copied to your
-// application bundle. To get the path to these resources, use the helper
-// function `resourcePath()` from ResourcePath.hpp
-//
-
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 #include <fstream>
@@ -22,6 +6,7 @@
 #include "ResourcePath.hpp"
 
 using namespace sf;
+using namespace std;
 
 int field[50][50][50] = { 0 };
 
@@ -46,120 +31,215 @@ int main()
 {
     srand(time(0));
 
-    RenderWindow window(VideoMode(740, 570), "Prototype");
-
- 
-     
-    // Mahjong Zone //
+    sf::RenderWindow window(sf::VideoMode(740, 700), "Comprxprx");
     
-    Texture t1, t2;
-    t1.loadFromFile(resourcePath() + "tiles.png");
-    t2.loadFromFile(resourcePath() + "bg.jpeg");
-    Sprite s(t1), sBackground(t2);
-    int w = 48, h = 66;
-    int stepX = w / 2 - 2, stepY = h / 2 - 2;
-    float offX = 4.6, offY = 7.1; // z offset 4.6 def
-    Vector3i v1, v2;
-    std::vector<Vector3i> moves;
+    window.setFramerateLimit(15);
 
-    ////load from file////
-    std::fstream myfile(resourcePath() + "map.txt");
-    for (int y = 0; y < 18; y++)
-        for (int x = 0; x < 30; x++)
-        {
-            char a;
-            myfile >> a;
-            int n = a - '0';
-            for (int z = 0; z < n; z++)
-                if (f(x - 1, y - 1, z))
-                    f(x - 1, y, z) = f(x, y - 1, z) = 0;
-                else
-                    f(x, y, z) = 1;
-        }
-
-    ////create map//////
-    for (int k = 1;; k++)
+    sf::Font font;
+    if (!font.loadFromFile("/Users/tony/Downloads/Arial/arialn/Arialn.ttf"))
     {
-        std::vector<Vector3i> opens;
-        for (int z = 0; z < 10; z++)
-            for (int y = 0; y < 18; y++)
-                for (int x = 0; x < 30; x++)
-                    if (f(x, y, z) > 0 && isOpen(x, y, z)) opens.push_back(Vector3i(x, y, z));
-
-        int n = opens.size();
-        if (n < 2) break;
-        int a = 0, b = 0;
-        while (a == b) { a = rand() % n; b = rand() % n; }
-        f(opens[a]) = -k;  if (k > 34) k++;
-        f(opens[b]) = -k;
-        k %= 14;
+        return 1;
     }
+    
+    // Header logo
+    RectangleShape Headerlogo;
+    Headerlogo.setPosition(150, 10);
+    Headerlogo.setSize(Vector2f(429,270));
+    Texture header_pic;
+    header_pic.loadFromFile("/Users/tony/Desktop/riskyy/GameResources/HeaderLogo.png");
+    Headerlogo.setTexture(&header_pic);
+    
+    // Menuscreen Background
+    RectangleShape game_background;
+    game_background.setSize(Vector2f(750, 540));
+    Texture game_background_pic;
+    game_background_pic.loadFromFile("/Users/tony/Desktop/riskyy/GameResources/background.png");
+    game_background.setTexture(&game_background_pic);
 
-    for (int z = 0; z < 10; z++)
-        for (int y = 0; y < 18; y++)
-            for (int x = 0; x < 30; x++) f(x, y, z) *= -1;
+    
+    // Sprites
+    Sprite cat2;
+    Texture cat_2;
+    int xpos_cat2 = 0;
+    cat_2.loadFromFile("/Users/tony/Desktop/riskyy/GameResources/cat2.png");
+    cat2.setTexture(cat_2);
+    cat2.setTextureRect(IntRect(0,0,220.8, 168));
+    cat2.setPosition(50, 300);
+    
+    // Start button
+    sf::RectangleShape startButton(sf::Vector2f(197.50, 47));
+    startButton.setPosition(270, 350);
+    Texture start_button;
+    start_button.loadFromFile("/Users/tony/Desktop/riskyy/GameResources/startbutton.png");
+    startButton.setTexture(&start_button);
+    
+    // How to play button ** Add texture
+    RectangleShape htpButton(Vector2f(187.50, 37));
+    htpButton.setPosition(270, 400);
+    Texture htp_button;
+    htp_button.loadFromFile("/Users/tony/Desktop/riskyy/GameResources/howtoplay.png");
+    htpButton.setTexture(&htp_button);
+    
+    
+    // Quit button
+    sf::RectangleShape quitButton(sf::Vector2f(200, 50));
+    quitButton.setPosition(270, 450);
+    quitButton.setFillColor(Color::Blue);
+    
+    
+    
+    // Setting button
+
+    // Game's zone
+    Texture t1, t2;
+        t1.loadFromFile(resourcePath() + "tiles.png");
+        t2.loadFromFile(resourcePath() + "bg.jpeg");
+        Sprite s(t1), sBackground(t2);
+        int w = 48, h = 66;
+        int stepX = w / 2 - 2, stepY = h / 2 - 2;
+        float offX = 4.6, offY = 7.1; // z offset 4.6 def
+        Vector3i v1, v2;
+        std::vector<Vector3i> moves;
+    ////load from file////
+      std::fstream myfile(resourcePath() + "map.txt");
+      for (int y = 0; y < 18; y++)
+          for (int x = 0; x < 30; x++)
+          {
+              char a;
+              myfile >> a;
+              int n = a - '0';
+              for (int z = 0; z < n; z++)
+                  if (f(x - 1, y - 1, z))
+                      f(x - 1, y, z) = f(x, y - 1, z) = 0;
+                  else
+                      f(x, y, z) = 1;
+          }
+
+      ////create map//////
+      for (int k = 1;; k++)
+      {
+          std::vector<Vector3i> opens;
+          for (int z = 0; z < 10; z++)
+              for (int y = 0; y < 18; y++)
+                  for (int x = 0; x < 30; x++)
+                      if (f(x, y, z) > 0 && isOpen(x, y, z)) opens.push_back(Vector3i(x, y, z));
+
+          int n = opens.size();
+          if (n < 2) break;
+          int a = 0, b = 0;
+          while (a == b) { a = rand() % n; b = rand() % n; }
+          f(opens[a]) = -k;  if (k > 34) k++;
+          f(opens[b]) = -k;
+          k %= 14;
+      }
+
+      for (int z = 0; z < 10; z++)
+          for (int y = 0; y < 18; y++)
+              for (int x = 0; x < 30; x++) f(x, y, z) *= -1;
 
 
+
+    
     while (window.isOpen())
     {
-        Event e;
-        while (window.pollEvent(e))
+        sf::Event event;
+        while (window.pollEvent(event))
         {
-            if (e.type == Event::Closed)
+            if (event.type == sf::Event::Closed)
+            {
                 window.close();
-
-            //move back
-            if (e.type == Event::MouseButtonReleased)
-                if (e.key.code == Mouse::Right)
+            }
+            else if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
+            {
+                sf::Vector2f mousePos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+                if (startButton.getGlobalBounds().contains(mousePos))
                 {
-                    int n = moves.size();
-                    if (n == 0) continue;
-                    f(moves[n - 1]) *= -1; moves.pop_back();
-                    f(moves[n - 2]) *= -1; moves.pop_back();
-                }
+                    // Transition to game loop
+                    window.clear();
+                    window.close();
+                    sf::RenderWindow gameWindow(sf::VideoMode(740, 570), "Comprxprx");
 
-            if (e.type == Event::MouseButtonPressed)
-                if (e.key.code == Mouse::Left)
-                    for (int z = 0; z < 10; z++)
+                    while (gameWindow.isOpen())
                     {
-                        Vector2i pos = Mouse::getPosition(window) - Vector2i(30, 0); // 30 - desk offset
-                        int x = (pos.x - z * offX) / stepX;
-                        int y = (pos.y + z * offY) / stepY;
+                        // Game's source code
+                        Event e;
+                               while (gameWindow.pollEvent(e))
+                               {
+                                   if (e.type == Event::Closed)
+                                       gameWindow.close();
 
-                        for (int i = 0; i < 2; i++)
-                            for (int j = 0; j < 2; j++)
-                                if (f(x - i, y - j, z) > 0 && isOpen(x - i, y - j, z))
-                                    v1 = Vector3i(x - i, y - j, z);
+                                   if (e.type == Event::MouseButtonPressed)
+                                       if (e.key.code == Mouse::Left)
+                                           for (int z = 0; z < 10; z++)
+                                           {
+                                               Vector2i pos = Mouse::getPosition(gameWindow) - Vector2i(30, 0); // 30 - desk offset
+                                               int x = (pos.x - z * offX) / stepX;
+                                               int y = (pos.y + z * offY) / stepY;
 
-                        if (v1 == v2) continue;
+                                               for (int i = 0; i < 2; i++)
+                                                   for (int j = 0; j < 2; j++)
+                                                       if (f(x - i, y - j, z) > 0 && isOpen(x - i, y - j, z))
+                                                           v1 = Vector3i(x - i, y - j, z);
 
-                        int a = f(v1), b = f(v2);
-                        if (a == b || (a > 34 && a < 39 && b>34 && b < 39) || (a >= 39 && b >= 39))
+                                               if (v1 == v2) continue;
+
+                                               int a = f(v1), b = f(v2);
+                                               if (a == b)
+                                               {
+                                                   f(v1) *= -1; moves.push_back(v1);
+                                                   f(v2) *= -1; moves.push_back(v2);
+                                               }
+                                               v2 = v1;
+                                           }
+                               }
+
+                               gameWindow.clear();
+                               gameWindow.draw(sBackground);
+                               for (int z = 0; z < 10; z++)
+                                   for (int x = 30; x >= 0; x--)
+                                       for (int y = 0; y < 18; y++)
+                                       {
+                                           int k = f(x, y, z) - 1;
+                                           if (k < 0) continue;
+                                           s.setTextureRect(IntRect(k * w, 0, w, h));
+                                           if (isOpen(x, y, z)) s.setTextureRect(IntRect(k * w, h, w, h));
+                                           s.setPosition(x * stepX + z * offX, y * stepY - z * offY);
+                                           s.move(30, 0); //desk offset
+                                           gameWindow.draw(s);
+                                       }
+
+                               gameWindow.display();
+                        sf::Event gameEvent;
+                        while (gameWindow.pollEvent(gameEvent))
                         {
-                            f(v1) *= -1; moves.push_back(v1);
-                            f(v2) *= -1; moves.push_back(v2);
+                            if (gameEvent.type == sf::Event::Closed)
+                            {
+                                gameWindow.close();
+                            }
                         }
-                        v2 = v1;
                     }
+                }
+                else if (quitButton.getGlobalBounds().contains(mousePos))
+                {
+                    window.close();
+                }
+            }
         }
 
-        window.clear();
-        window.draw(sBackground);
-        for (int z = 0; z < 10; z++)
-            for (int x = 30; x >= 0; x--)
-                for (int y = 0; y < 18; y++)
-                {
-                    int k = f(x, y, z) - 1;
-                    if (k < 0) continue;
-                    s.setTextureRect(IntRect(k * w, 0, w, h));
-                    if (isOpen(x, y, z)) s.setTextureRect(IntRect(k * w, h, w, h));
-                    s.setPosition(x * stepX + z * offX, y * stepY - z * offY);
-                    s.move(30, 0); //desk offset
-                    window.draw(s);
-                }
-
+        window.draw(game_background);
+        window.draw(Headerlogo);
+        window.draw(htpButton);
+        window.draw(startButton);
+        window.draw(quitButton);
+        window.draw(cat2);
+        xpos_cat2 += 220.8; // ตั้งไซส์สไปรท์ให้ขนาดเท่ากันแล้วปรับ xpos ให้เท่ากันหมด
+        if (xpos_cat2 >= 1104) xpos_cat2 = 0;
+        cat2.setTextureRect(IntRect(xpos_cat2, 0, 220.8, 168));
+        
         window.display();
     }
 
     return 0;
 }
+
+
