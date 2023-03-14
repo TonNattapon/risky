@@ -52,6 +52,13 @@ int main()
     MM_background_pic.loadFromFile("/Users/suran/catgoo/catgogo/pic/bg.jpeg");
     MM_background.setTexture(&MM_background_pic);
 
+    //how to play block
+    RectangleShape htp_bg;
+    Texture htpBg_pic;
+    htp_bg.setPosition(0, 0); 
+    htp_bg.setSize(Vector2f(740,700)); 
+    htpBg_pic.loadFromFile("/Users/suran/catgoo/catgogo/pic/howtoplay.png");
+    htp_bg.setTexture(&htpBg_pic);
 
     // Sprites cat1
     Sprite cat1;
@@ -82,7 +89,7 @@ int main()
     RectangleShape htpButton(Vector2f(169, 21));
     htpButton.setPosition(290, 450);
     Texture htp_pic;
-    htp_pic.loadFromFile("/Users/suran/catgoo/catgogo/pic/howtoplay.png");
+    htp_pic.loadFromFile("/Users/suran/catgoo/catgogo/pic/htp.png");
     htpButton.setTexture(&htp_pic);
 
 
@@ -95,7 +102,7 @@ int main()
 
 
 
-    // Setting button ** Add code maybe mai tom la 555
+    // Setting button ** Add code maybe mai tam la 555
 
     // Game's zone
     Texture t1, t2;
@@ -114,7 +121,7 @@ int main()
         {
             char a;
             myfile >> a;
-            int n = a - '0';
+            int n = a - '0'; // ทำให้ char เป็น int
             for (int z = 0; z < n; z++)
                 if (f(x - 1, y - 1, z))
                     f(x - 1, y, z) = f(x, y - 1, z) = 0;
@@ -149,15 +156,16 @@ int main()
 
     while (window.isOpen())
     {
-        Event event;
+        sf::Event event;
         while (window.pollEvent(event))
         {
-            if (event.type == Event::Closed)
+            if (event.type == sf::Event::Closed)
             {
                 window.close();
             }
             else if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
-            {
+            {  //when pressed left mouse
+                
                 sf::Vector2f mousePos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
                 if (startButton.getGlobalBounds().contains(mousePos))
                 {
@@ -179,7 +187,7 @@ int main()
                                 if (e.key.code == Mouse::Left)
                                     for (int z = 0; z < 10; z++)
                                     {
-                                        Vector2i pos = Mouse::getPosition(gameWindow) - Vector2i(30, 0); // 30 - desk offset
+                                        Vector2i pos = Mouse::getPosition(gameWindow) - Vector2i(40, 10); // 30 - desk offset
                                         int x = (pos.x - z * offX) / stepX;
                                         int y = (pos.y + z * offY) / stepY;
 
@@ -187,6 +195,10 @@ int main()
                                             for (int j = 0; j < 2; j++)
                                                 if (f(x - i, y - j, z) > 0 && isOpen(x - i, y - j, z))
                                                     v1 = Vector3i(x - i, y - j, z);
+                                        //if (isOpen(x, y, z)) {
+                                        //   Vector3i(v) = Vector3i(x, y, z)
+                                        //        move.pushback
+                                        //}
 
                                         if (v1 == v2) continue;
 
@@ -226,10 +238,24 @@ int main()
                         }
                     }
                 }
+                else if (htpButton.getGlobalBounds().contains(mousePos))
+                {
+                    while(1){
+                        window.draw(htp_bg);
+                        window.display();
+                        if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
+                        {
+                            break;
+                        }
+                    }
+                }
                 else if (quitButton.getGlobalBounds().contains(mousePos))
                 {
                     window.close();
+                    
                 }
+                
+                
             }
         }
 
